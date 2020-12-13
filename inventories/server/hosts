@@ -1,0 +1,5 @@
+[local]
+localhost
+
+[openhab]
+openhab-01 ansible_host=192.168.0.18 ansible_port=22 ansible_user=pi

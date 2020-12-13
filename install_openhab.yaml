@@ -1,0 +1,5 @@
+- name: "fluentd - configure pods" 
+  hosts: all
+  pre_tasks:
+  roles:
+    - install_openhab
