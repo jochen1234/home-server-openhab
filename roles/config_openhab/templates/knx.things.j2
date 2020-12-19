@@ -1,0 +1,21 @@
+//TUNNEL
+Bridge knx:ip:bridge [  
+    type="ROUTER", 
+    ipAddress="192.168.0.32", 
+    portNumber=3671, 
+	localIp="192.168.0.18",
+    readingPause=50, 
+    responseTimeout=10, 
+    readRetriesLimit=3, 
+    autoReconnectPeriod=60,
+    localSourceAddr="0.0.0"
+] {
+    Thing device generic [
+        address="1.2.3",
+        fetch=true,
+        pingInterval=300,
+        readInterval=3600
+    ] {
+        Type switch        : Licht_UG_Arbeitzimmer        "Light"       [ ga="1/1/3+<1/4/3" ]
+      }
+}

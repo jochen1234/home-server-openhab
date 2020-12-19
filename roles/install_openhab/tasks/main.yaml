@@ -41,7 +41,7 @@
 
 - name: "install_openhab - add needed packages"
   apt:
-    name: ['apt-transport-https','openjdk-8-jre-headless', 'openhab2', 'openhab2-addons']
+    name: ['apt-transport-https','openjdk-8-jre-headless', 'openhab2', 'openhab2-addons', 'nginx']
     state: present
   become: true
   become_user: "root"

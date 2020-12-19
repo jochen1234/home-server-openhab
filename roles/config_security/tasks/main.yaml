@@ -1,0 +1,15 @@
+- name: "config_security - populate /etc/environment"
+  lineinfile:
+    dest: "/etc/environment"
+    state: present
+    regexp: "^{{ item.key }}="
+    line: "{{ item.key }}={{ item.value}}"
+  with_items: "{{ openhab.environment }}"
+
+- name : "config_security - configure nginx openhab2"
+  template:
+    src: "templates/openhab.j2"
+    dest: "/etc/nginx/sites-enabled/openhab.conf"
+    force: yes
+  become: true
+  become_user: "root"

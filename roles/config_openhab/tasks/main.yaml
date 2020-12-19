@@ -1,0 +1,37 @@
+- name : "config_openhab - configure knx.things openhab"
+  template:
+    src: "templates/knx.things.j2"
+    dest: "/etc/openhab2/things/knx.things"
+    force: yes
+  become: true
+  become_user: "openhab"
+
+- name : "config_openhab - configure house.sitemap openhab"
+  template:
+    src: "templates/house.sitemap.j2"
+    dest: "/etc/openhab2/sitemaps/house.sitemap"
+    force: yes
+  become: true
+  become_user: "openhab"
+
+- name : "config_openhab - configure house.items openhab"
+  template:
+    src: "templates/house.items.j2"
+    dest: "/etc/openhab2/items/house.items"
+    force: yes
+  become: true
+  become_user: "openhab"
+
+- name: "config_openhab - stop openhab2 for dnf-automatic"
+  systemd:
+    name: openhab2
+    state: stopped
+  become: true
+  become_user: "root"
+
+- name: "config_openhab - start openhab2 for dnf-automatic"
+  systemd:
+    name: openhab2
+    state: started
+  become: true
+  become_user: "root"

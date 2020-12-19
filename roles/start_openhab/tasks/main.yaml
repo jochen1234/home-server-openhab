@@ -1,0 +1,47 @@
+---
+- debug:
+    msg: "start_openhab - start server"
+
+# - name: "start_openhab - reload service openhab2, in all cases"
+#   systemd:
+#     name: openhab2
+#     state: reloaded
+#   become: true
+#   become_user: "root"
+
+- name: "start_openhab - enable service openhab2 and ensure it is not masked"
+  systemd:
+    name: openhab2
+    enabled: yes
+    masked: no
+  become: true
+  become_user: "root"
+
+- name: "start_openhab - start openhab2 for dnf-automatic"
+  systemd:
+    name: openhab2
+    state: started
+  become: true
+  become_user: "root"
+
+- name: "start_openhab - enable service nginx and ensure it is not masked"
+  systemd:
+    name: nginx 
+    enabled: yes
+    masked: no
+  become: true
+  become_user: "root"
+
+- name: "start_openhab - start nginx for dnf-automatic"
+  systemd:
+    name: nginx
+    state: started 
+  become: true
+  become_user: "root"
+
+- name: "start_openhab - reload nginx for dnf-automatic"
+  systemd:
+    name: nginx
+    state: reloaded 
+  become: true
+  become_user: "root"
